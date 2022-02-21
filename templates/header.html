@@ -11,7 +11,7 @@
                 <span>login</span>
             </a>
             {% else %}
-            <a href="{% url 'accountapp:logout'%}?next={{ request.path }} %}">
+            <a href="{% url 'accountapp:login'%}?next={{ request.path }} %}">
                 <span>logout</span>
             </a>
             {% endif %}
