@@ -10,7 +10,6 @@
         <form action="{% url 'commentapp:create' %}" method="post">
             {% csrf_token %}
             {% bootstrap_form form %}
-
             {% if user.is_authenticated %}
             <input type="submit" class="btn btn-primary rounded-pill col-5 mt-3">
             {% else %}
