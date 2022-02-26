@@ -19,11 +19,12 @@
 
 a {
     color: black;
+    text-decoration-line: none ;
 }
 
 a:hover {
   color: black;
-    text-decoration: none;
+    text-decoration-line: none ;
 }
 
 .pragmatic_header_nav{
