@@ -14,8 +14,6 @@ RUN pip install gunicorn
 
 RUN pip install mysqlclient
 
-RUN echo "SECRET_KEY=django-insecure-$cfw)k6xn(v(2c)@qn3x0qylv^5g*3ew_zor9z=&k24c^vplt!" > .env
-
 RUN python manage.py collectstatic
 
 EXPOSE 8000
