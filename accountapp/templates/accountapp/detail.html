@@ -12,7 +12,7 @@
 
             {% if target_user.profile %}
                 <img src = "{{ target_user.profile.image.url }}" alt=""
-             style="height: 10rem; width: 10rem; border-radius: 10rem; margin-bottom: 2rem" >
+             style="height: 10rem; width: 10rem; border-radius: 10rem; margin-bottom: 2rem; object-fit: cover;"  >
              <h2 style="font-family: NanumSquareB">
                     {{ target_user.profile.nickname }}
                  {% if target_user == user %}
