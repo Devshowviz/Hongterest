@@ -1,20 +1,28 @@
 FROM python:3.9.0
 
+RUN mkdir /root/.ssh/
+
+ADD ./.ssh/id_rsa /root/.ssh/id_rsa
+
+RUN chmod 600 /root/.ssh/id_rsa
+
+RUN touch /root/.ssh/known_hosts
+
+RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
+
 WORKDIR /home/
 
 RUN echo "testing1234"
 
 RUN git clone https://github.com/Devshowviz/pragmatic.git
 
-WORKDIR /home/pragmatic/
+WORKDIR /home/pragmatic_fork/
 
 RUN pip install -r requirements.txt
 
 RUN pip install gunicorn
 
 RUN pip install mysqlclient
-
-RUN python manage.py collectstatic
 
 EXPOSE 8000
 
