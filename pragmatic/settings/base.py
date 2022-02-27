@@ -15,6 +15,7 @@ from pathlib import Path
 import environ
 import os
 
+from django.contrib import messages
 from django.urls import reverse_lazy
 
 
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'commentapp',
     'projectapp',
     'subscribeapp',
+    'likeapp',
 
 
 ]
@@ -51,6 +53,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
 
 ROOT_URLCONF = 'pragmatic.urls'
 
