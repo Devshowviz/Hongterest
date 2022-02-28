@@ -1,3 +1,4 @@
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
@@ -17,22 +18,22 @@ from likeapp.models import LikeRecord
 def db_transaction(user, article):
     article.like += 1
     article.save()
+
     if LikeRecord.objects.filter(user=user, article=article).exists():
         raise ValidationError('like already exists')
     else:
         LikeRecord(user=user, article=article).save()
 
 
-
 @method_decorator(login_required, 'get')
 class LikeArticleView(RedirectView):
-    def get(self, request, *args, **kwargs):
+    def get_redirect_url(self, *args, **kwargs):
         return reverse('articleapp:detail', kwargs={'pk': kwargs['pk']})
 
     def get(self, *args, **kwargs):
-
         user = self.request.user
         article = get_object_or_404(Article, pk=kwargs['pk'])
+
 
         try:
             db_transaction(user, article)
@@ -43,6 +44,3 @@ class LikeArticleView(RedirectView):
 
 
         return super(LikeArticleView, self).get(self.request, *args, **kwargs)
-
-
-
